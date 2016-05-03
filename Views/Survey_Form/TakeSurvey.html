@@ -1,0 +1,23 @@
+<div ng-show="authenticated">
+    <div class="row" ng-repeat="data in viewsurvey.questions">
+        <label>
+            {{data.ques_number}}. 
+            {{data.ques_text}}
+        </label>
+        <br />
+        <div class="row" ng-repeat="dd in viewsurvey.options track by $index">
+            <div>
+                <div ng-repeat="(key, value) in dd">
+                    <div ng-if="data.ques_number==value.match_id">
+                        <input type="radio" value="{{value.ques_id}}" data-val="{{value.option_text}}" name="{{value.match_id}}" />
+                        {{value.option_text}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{data.created_on}}
+    </div>
+    <br />
+    <input type="button" value="Submit" ng-click="surveySubmit()" />
+</div>

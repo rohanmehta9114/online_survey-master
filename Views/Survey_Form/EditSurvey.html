@@ -1,0 +1,25 @@
+<div ng-show="authenticated">
+    <input type="hidden" ng-model="survey_name" />
+    <div class="row" ng-repeat="data in viewsurvey.questions">
+        <label>
+            {{data.ques_number}}. 
+        </label>
+        <input type="text" data-ques-id="{{data._id}}" data-ques-text="{{data.ques_text}}" value="{{data.ques_text}}" />
+        <br />
+        <div class="row" ng-repeat="dd in viewsurvey.options track by $index">
+            <div>
+                <div ng-repeat="(key, value) in dd">
+                    <div ng-if="data.ques_number==value.match_id">
+                        <input type="radio" value="{{value.option_text}}" name="{{value.match_id}}" />
+                        <input type="text" data-option-id="{{value._id}}" value="{{value.option_text}}" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{data.created_on}}
+    </div>
+    <br />
+    <input type="button" value="Back to list" ng-click="backEditedSurvey()" />
+    <input type="button" value="Save" ng-click="saveEditedSurvey()" />
+</div>

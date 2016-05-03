@@ -1,0 +1,32 @@
+<div ng-show="authenticated">
+    <div class="row">
+        <div class="col col-md-6" id="surveyName">
+            <span>Give your survey a name:</span>
+            <br><br/>
+            <input placeholder="Choose a Survey Name" type="text" ng-model="txtSurveyName" />
+            <br><br>
+            <input type="button" class="btn btn-default" value="Next" id="createSurveyNameBtn" ng-show="txtSurveyName.length" ng-click="createSurveyName()" />
+        </div>
+        <div id="surveyQuestions" class="col col-md-6">
+            <span>Add your Survey Questions here:</span>
+            <br/><br/>
+            <textarea placeholder="Question text" type="text" ng-model="txtQuesText" ></textarea>
+            <br /><br/>
+            <input type="button" class="btn btn-default" ng-show="txtQuesText.length" value="Next" id="addOptionsBtn" ng-click="addQues()" />
+            <br /><br/>
+        </div>
+        <div id="surveyOptions" class="col col-md-6">
+            <span>Add your Survey Options here:</span>
+            <br /><br/>
+            <input placeholder="Option text" type="text" ng-model="txtOptionText" />
+            <br /><br/>
+            <input type="button" class="btn btn-default"  value="Cancel" id="Button1" ng-click="cancelSurvey()" />
+            <input type="button" class="btn btn-default" value="Back" ng-click="backBtn()" />
+            <input type="button" class="btn btn-default" ng-show="txtOptionText.length" value="Add Options" ng-click="addOptions()" />
+            <input type="button" class="btn btn-default" ng-show="isFinalSave" value="Final Save" ng-click="finalSave()" />
+        </div>
+        <div class="col col-md-6" ng-show="displayOutput" id="displayOutput">
+            <!--Preview dynamically added survey questions-->
+        </div>
+    </div>
+</div>
